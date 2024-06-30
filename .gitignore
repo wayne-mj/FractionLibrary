@@ -363,7 +363,4 @@ MigrationBackup/
 FodyWeavers.xsd
 
 # Hide unused projects
-Test-FractionSystem/
-Test-InchFeature/
-Test-MetricSystem/
-Test-ScaleMath/
+.vscode/
