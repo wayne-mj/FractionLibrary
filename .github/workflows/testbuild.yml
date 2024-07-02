@@ -2,9 +2,9 @@ name: Run tests in known good environment
 
 on:
   workflow_dispatch:
-  push:
-    tags:
-      - 'v*'
+#   push:
+#     tags:
+#       - 'v*'
 
 jobs:
   build-and-test:
