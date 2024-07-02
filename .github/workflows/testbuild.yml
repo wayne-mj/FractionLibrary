@@ -18,6 +18,15 @@ jobs:
         with:
           dotnet-version: 8.x
       
+      - name: Get version from tag
+        id: getversion
+        uses: wayne-mj/getversion@v1.5
+        with:
+          version-format: 'without-v'
+      
+      - name: Print version
+        run: echo "Version is ${{ steps.getversion.outputs.release_version }}"
+        
       - name: Install dependencies
         run: dotnet restore
 
