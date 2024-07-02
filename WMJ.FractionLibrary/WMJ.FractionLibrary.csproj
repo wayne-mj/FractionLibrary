@@ -4,6 +4,19 @@
     <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    <PackageId>WMJ.FractionLibrary</PackageId>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <Authors>Wayne M. Jackson</Authors>
+    <RepositoryUrl>https://github.com/wayne-mj/FractionLibrary</RepositoryUrl>
+    <RepoistoryType>git</RepoistoryType>
+    <Copyright>Copyright 2024 Wayne M. Jackson</Copyright>
+    <Description>A library for working with fractions</Description>
   </PropertyGroup>
+  
+  <ItemGroup>
+    <None Include="../README.md" Pack="true" PackagePath="/" />
+  </ItemGroup>
+
 
 </Project>
