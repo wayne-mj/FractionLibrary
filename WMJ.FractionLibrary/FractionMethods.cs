@@ -2,6 +2,9 @@ namespace WMJ.FractionLibrary;
 
 public static partial class Fraction
 {
+    private static readonly int MaxDenominator = 100000;
+    private static readonly int DecimalPlaces = 6;
+
     /// <summary>
     /// Adds two fractions together
     /// </summary>
@@ -487,6 +490,32 @@ public static partial class Fraction
         else
         {
             result = new FractionModel { Numerator = (int)l_num, Denominator = (int)l_den, Status = "OK"};
+        }
+
+        return result;
+    }
+
+    /// <summary>
+    /// Converts a decimal to an approximate fraction (Simplest form)
+    /// </summary>
+    /// <param name="value"></param>
+    /// <returns></returns>
+    public static FractionModel DecimalToFractionApprox(double value)
+    {
+        FractionModel result = new();
+        long l_num =0, l_den=(long)MaxDenominator;
+        bool overflow =false;
+
+        l_num = (long)(Math.Round(value,DecimalPlaces) * MaxDenominator);
+
+        overflow = CheckOverflow(l_num) || CheckOverflow(l_den);
+        if (overflow)
+        {
+            result = new FractionModel {Numerator= 0, Denominator=0, Status = "Integer Overflow" };
+        }
+        else
+        {
+            result = SimplifyFraction((int)l_num, (int)l_den);
         }
 
         return result;

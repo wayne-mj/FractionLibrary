@@ -120,4 +120,17 @@ public class Tests
             Assert.That(result.Status, Is.EqualTo(status));
         });
     }
+
+    [Test]
+    [TestCase(0.5,1,2)]
+    [TestCase(0.75,3,4)]
+    public void TestToFraction(double Value, int ResultNumerator, int ResultDenominator)
+    {
+        var result = Fraction.DecimalToFractionApprox(Value);
+        Assert.Multiple(() =>
+        {
+            Assert.That(result.Numerator, Is.EqualTo(ResultNumerator));
+            Assert.That(result.Denominator, Is.EqualTo(ResultDenominator));
+        });
+    }
 }
