@@ -38,7 +38,7 @@ public static partial class Fraction
 
         if (overflow)
         {
-            result = new FractionModel {Numerator= 0, Denominator=0, Status = "Integer Overflow" };
+            result = new FractionModel {Numerator= 0, Denominator=0, Status = "Integer Overflow", Err_Num = l_num, Err_Den = l_den };
         }
         else
         {
@@ -139,7 +139,7 @@ public static partial class Fraction
 
         if (overflow)
         {
-            result = new FractionModel {Numerator= 0, Denominator=0, Status = "Integer Overflow" };
+            result = new FractionModel {Numerator= 0, Denominator=0, Status = "Integer Overflow", Err_Num = l_num, Err_Den = l_den };
         }
         else
         {
@@ -233,7 +233,7 @@ public static partial class Fraction
 
         if (overflow)
         {
-            result = new FractionModel {Numerator= 0, Denominator=0, Status = "Integer Overflow" };
+            result = new FractionModel {Numerator= 0, Denominator=0, Status = "Integer Overflow", Err_Num = l_num, Err_Den = l_den };
         }
         else
         {
@@ -485,7 +485,7 @@ public static partial class Fraction
         
         if (overflow)
         {
-            result = new FractionModel {Numerator= 0, Denominator=0, Status = "Integer Overflow" };
+            result = new FractionModel {Numerator= 0, Denominator=0, Status = "Integer Overflow", Err_Num = l_num, Err_Den = l_den };
         }
         else
         {
@@ -511,7 +511,7 @@ public static partial class Fraction
         overflow = CheckOverflow(l_num) || CheckOverflow(l_den);
         if (overflow)
         {
-            result = new FractionModel {Numerator= 0, Denominator=0, Status = "Integer Overflow" };
+            result = new FractionModel {Numerator= 0, Denominator=0, Status = "Integer Overflow", Err_Num = l_num, Err_Den = l_den };
         }
         else
         {
