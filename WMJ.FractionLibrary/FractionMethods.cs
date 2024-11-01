@@ -15,7 +15,7 @@ public static partial class Fraction
     {
         _ = new FractionModel();
         long l_num =0, l_den=0;
-        bool overflow =false;
+        // bool overflow =false;
         FractionModel result;
         if ((firstFraction.Denominator == 0) || (secondFraction.Denominator == 0))
         {
@@ -25,18 +25,18 @@ public static partial class Fraction
         {
             l_num = ((long)firstFraction.Numerator * (long)secondFraction.Denominator) + ((long)secondFraction.Numerator * (long)firstFraction.Denominator);
             l_den = (long)firstFraction.Denominator * (long)secondFraction.Denominator;
-            overflow = CheckOverflow(l_num) || CheckOverflow(l_den);
+            //overflow = CheckOverflow(l_num) || CheckOverflow(l_den);
             //Console.WriteLine($"Cross multiply: l_num: {l_num}, l_den: {l_den} overflow: {overflow}");
         }
         else
         {
             l_num = (long)firstFraction.Numerator + (long)secondFraction.Numerator;
             l_den = (long)firstFraction.Denominator;
-            overflow = CheckOverflow(l_num) || CheckOverflow(l_den);
+            //overflow = CheckOverflow(l_num) || CheckOverflow(l_den);
             //Console.WriteLine($"Addition: l_num: {l_num}, l_den: {l_den} overflow: {overflow}");
         }
 
-        if (overflow)
+        if (CheckOverflow(l_num) || CheckOverflow(l_den))
         {
             result = new FractionModel {Numerator= 0, Denominator=0, Status = "Integer Overflow", Err_Num = l_num, Err_Den = l_den };
         }
@@ -116,7 +116,7 @@ public static partial class Fraction
     {
         _ = new FractionModel();
         long l_num =0, l_den=0;
-        bool overflow =false;
+        //bool overflow =false;
         FractionModel result;
         if ((firstFraction.Denominator == 0) || (secondFraction.Denominator == 0))
         {
@@ -126,18 +126,18 @@ public static partial class Fraction
         {
             l_num = ((long)firstFraction.Numerator * (long)secondFraction.Denominator) - ((long)secondFraction.Numerator * (long)firstFraction.Denominator);
             l_den = (long)firstFraction.Denominator * (long)secondFraction.Denominator;
-            overflow = CheckOverflow(l_num) || CheckOverflow(l_den);
+            //overflow = CheckOverflow(l_num) || CheckOverflow(l_den);
             //Console.WriteLine($"Cross multiply: l_num: {l_num}, l_den: {l_den} overflow: {overflow}");
         }
         else
         {
             l_num = (long)firstFraction.Numerator - (long)secondFraction.Numerator;
             l_den = (long)firstFraction.Denominator;
-            overflow = CheckOverflow(l_num) || CheckOverflow(l_den);
+            //overflow = CheckOverflow(l_num) || CheckOverflow(l_den);
             //Console.WriteLine($"Addition: l_num: {l_num}, l_den: {l_den} overflow: {overflow}");
         }
 
-        if (overflow)
+        if (CheckOverflow(l_num) || CheckOverflow(l_den))
         {
             result = new FractionModel {Numerator= 0, Denominator=0, Status = "Integer Overflow", Err_Num = l_num, Err_Den = l_den };
         }
@@ -217,7 +217,7 @@ public static partial class Fraction
     {
         FractionModel result = new();
         long l_num =0, l_den=0;
-        bool overflow =false;
+        //bool overflow =false;
 
         if ((firstFraction.Denominator ==0) || (secondFraction.Denominator ==0))
         {
@@ -227,11 +227,11 @@ public static partial class Fraction
         {
             l_num = (long)firstFraction.Numerator * (long)secondFraction.Numerator;
             l_den = (long)firstFraction.Denominator * (long)secondFraction.Denominator;
-            overflow = CheckOverflow(l_num) || CheckOverflow(l_den);
+            //overflow = CheckOverflow(l_num) || CheckOverflow(l_den);
             //Console.WriteLine($"Multiplication: l_num: {l_num}, l_den: {l_den} overflow: {overflow}");
         }
 
-        if (overflow)
+        if (CheckOverflow(l_num) || CheckOverflow(l_den))
         {
             result = new FractionModel {Numerator= 0, Denominator=0, Status = "Integer Overflow", Err_Num = l_num, Err_Den = l_den };
         }
@@ -464,13 +464,13 @@ public static partial class Fraction
     {
         FractionModel result = new();
         long l_num =0, l_den=0;
-        bool overflow =false;
+        //bool overflow =false;
 
         if ((Unit != 0) && (Denominator != 0))
         {
             l_num = (long)Unit * (long)Denominator + (long)Numerator;
             l_den = (long)Denominator;
-            overflow = CheckOverflow(l_num) || CheckOverflow(l_den);
+            //overflow = CheckOverflow(l_num) || CheckOverflow(l_den);
         }
         else if (Denominator == 0)
         {
@@ -480,10 +480,10 @@ public static partial class Fraction
         {
             l_num = (long)Numerator;
             l_den = (long)Denominator;
-            overflow = CheckOverflow(l_num) || CheckOverflow(l_den);
+            //overflow = CheckOverflow(l_num) || CheckOverflow(l_den);
         }
         
-        if (overflow)
+        if (CheckOverflow(l_num) || CheckOverflow(l_den))
         {
             result = new FractionModel {Numerator= 0, Denominator=0, Status = "Integer Overflow", Err_Num = l_num, Err_Den = l_den };
         }
@@ -504,12 +504,12 @@ public static partial class Fraction
     {
         FractionModel result = new();
         long l_num =0, l_den=(long)MaxDenominator;
-        bool overflow =false;
+        //bool overflow =false;
 
         l_num = (long)(Math.Round(value,DecimalPlaces) * MaxDenominator);
 
-        overflow = CheckOverflow(l_num) || CheckOverflow(l_den);
-        if (overflow)
+        //overflow = CheckOverflow(l_num) || CheckOverflow(l_den);
+        if (CheckOverflow(l_num) || CheckOverflow(l_den))
         {
             result = new FractionModel {Numerator= 0, Denominator=0, Status = "Integer Overflow", Err_Num = l_num, Err_Den = l_den };
         }
