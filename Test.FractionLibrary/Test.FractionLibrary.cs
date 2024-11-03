@@ -91,6 +91,19 @@ public class Tests
     }
 
     [Test]
+    [TestCase(4,6,2,3)]
+    public void TestLongSimplifyFraction(long Numerator, long Demoninator, long ResultNumerator, long ResultDenominator)
+    {
+        var result = Fraction.l_SimplifyFraction(Numerator, Demoninator);
+        Assert.Multiple(() =>
+        {
+            Assert.That(result.l_Numerator, Is.EqualTo(ResultNumerator));
+            Assert.That(result.l_Denominator, Is.EqualTo(ResultDenominator));
+        });
+    }
+
+
+    [Test]
     [TestCase(3,2,1,1,2,"OK")]
     [TestCase(5,2,2,1,2,"OK")]
     [TestCase(1,2,0,1,2,"OK")]
