@@ -38,7 +38,7 @@ public static partial class Fraction
 
         if (CheckOverflow(l_num) || CheckOverflow(l_den))
         {
-            result = new FractionModel {Numerator= 0, Denominator=0, Status = "Integer Overflow", Err_Num = l_num, Err_Den = l_den };
+            result = new FractionModel {Numerator= 0, Denominator=0, Status = "Integer Overflow", l_Numerator = l_num, l_Denominator = l_den };
         }
         else
         {
@@ -139,7 +139,7 @@ public static partial class Fraction
 
         if (CheckOverflow(l_num) || CheckOverflow(l_den))
         {
-            result = new FractionModel {Numerator= 0, Denominator=0, Status = "Integer Overflow", Err_Num = l_num, Err_Den = l_den };
+            result = new FractionModel {Numerator= 0, Denominator=0, Status = "Integer Overflow", l_Numerator = l_num, l_Denominator = l_den };
         }
         else
         {
@@ -233,7 +233,7 @@ public static partial class Fraction
 
         if (CheckOverflow(l_num) || CheckOverflow(l_den))
         {
-            result = new FractionModel {Numerator= 0, Denominator=0, Status = "Integer Overflow", Err_Num = l_num, Err_Den = l_den };
+            result = new FractionModel {Numerator= 0, Denominator=0, Status = "Integer Overflow", l_Numerator = l_num, l_Denominator = l_den };
         }
         else
         {
@@ -406,6 +406,25 @@ public static partial class Fraction
         }        
     }
     
+    public static FractionModel l_SimplifyFraction(long Numerator, long Denominator)
+    {
+        FractionModel result = new();
+
+        if (Denominator == 0)
+        {
+            return result = new() { Status = "Divide by 0" };
+        }
+        else if (Numerator == 0)
+        {
+            return result = new() { l_Numerator = 0, l_Denominator = 0, Status = "OK" };
+        }
+        else
+        {
+            long gcd = l_GCDFunction(Numerator, Denominator);
+            return result = new() { l_Numerator = Numerator / gcd, l_Denominator = Denominator / gcd, Status = "OK" };
+        }
+    }
+
     /// <summary>
     /// Finds the Greatest Common Denominator
     /// </summary>
@@ -425,6 +444,22 @@ public static partial class Fraction
         else
         {
             return GCDFunction(y, x % y);
+        }
+    }
+
+    public static long l_GCDFunction(long x,long y)
+    {
+        if (x ==0)
+        {
+            return y;
+        }
+        else if (y == 0)
+        {
+            return x;
+        }
+        else
+        {
+            return l_GCDFunction(y, x % y);
         }
     }
 
@@ -485,7 +520,7 @@ public static partial class Fraction
         
         if (CheckOverflow(l_num) || CheckOverflow(l_den))
         {
-            result = new FractionModel {Numerator= 0, Denominator=0, Status = "Integer Overflow", Err_Num = l_num, Err_Den = l_den };
+            result = new FractionModel {Numerator= 0, Denominator=0, Status = "Integer Overflow", l_Numerator = l_num, l_Denominator = l_den };
         }
         else
         {
@@ -511,7 +546,7 @@ public static partial class Fraction
         //overflow = CheckOverflow(l_num) || CheckOverflow(l_den);
         if (CheckOverflow(l_num) || CheckOverflow(l_den))
         {
-            result = new FractionModel {Numerator= 0, Denominator=0, Status = "Integer Overflow", Err_Num = l_num, Err_Den = l_den };
+            result = new FractionModel {Numerator= 0, Denominator=0, Status = "Integer Overflow", l_Numerator = l_num, l_Denominator = l_den };
         }
         else
         {
