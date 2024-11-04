@@ -7,6 +7,16 @@ public class Tests
     {
     }
 
+    /// <summary>
+    /// Test AddFraction
+    /// </summary>
+    /// <param name="FirstNumerator"></param>
+    /// <param name="FirstDenominator"></param>
+    /// <param name="SecondNumerator"></param>
+    /// <param name="SecondDenominator"></param>
+    /// <param name="ResultNumerator"></param>
+    /// <param name="ResultDenominator"></param>
+    /// <param name="status"></param>
     [Test]
     [TestCase(1, 2, 1, 2, 2, 2, "OK")]
     [TestCase(1, 2, 1, 3, 5, 6, "OK")]
@@ -25,6 +35,16 @@ public class Tests
         });
     }
 
+    /// <summary>
+    /// Test SubtractFraction
+    /// </summary>
+    /// <param name="FirstNumerator"></param>
+    /// <param name="FirstDenominator"></param>
+    /// <param name="SecondNumerator"></param>
+    /// <param name="SecondDenominator"></param>
+    /// <param name="ResultNumerator"></param>
+    /// <param name="ResultDenominator"></param>
+    /// <param name="status"></param>
     [Test]
     [TestCase(2,3,1,3,1,3,"OK")]
     [TestCase(2,3,1,2,1,6,"OK")]
@@ -42,6 +62,16 @@ public class Tests
         });
     }
 
+    /// <summary>
+    /// Test MultiplyFraction
+    /// </summary>
+    /// <param name="FirstNumerator"></param>
+    /// <param name="FirstDenominator"></param>
+    /// <param name="SecondNumerator"></param>
+    /// <param name="SecondDenominator"></param>
+    /// <param name="ResultNumerator"></param>
+    /// <param name="ResultDenominator"></param>
+    /// <param name="status"></param>
     [Test]
     [TestCase(2,3,1,3,2,9,"OK")]
     [TestCase(2,3,1,2,2,6,"OK")]
@@ -59,6 +89,16 @@ public class Tests
         });
     }
 
+    /// <summary>
+    /// Test DivideFraction
+    /// </summary>
+    /// <param name="FirstNumerator"></param>
+    /// <param name="FirstDenominator"></param>
+    /// <param name="SecondNumerator"></param>
+    /// <param name="SecondDenominator"></param>
+    /// <param name="ResultNumerator"></param>
+    /// <param name="ResultDenominator"></param>
+    /// <param name="status"></param>
     [Test]
     [TestCase(2,3,1,3,6,3,"OK")]
     [TestCase(2,3,1,2,4,3,"OK")]
@@ -76,6 +116,13 @@ public class Tests
         });
     }
 
+    /// <summary>
+    /// Test SimplifyFraction
+    /// </summary>
+    /// <param name="FirstNumerator"></param>
+    /// <param name="FirstDenominator"></param>
+    /// <param name="ResultNumerator"></param>
+    /// <param name="ResultDenominator"></param>
     [Test]
     [TestCase(4,6,2,3)]
     [TestCase(1,3,1,3)]
@@ -90,11 +137,20 @@ public class Tests
         });
     }
 
+    /// <summary>
+    /// Test LongSimplifyFraction
+    /// </summary>
+    /// <param name="Numerator"></param>
+    /// <param name="Denominator"></param>
+    /// <param name="ResultNumerator"></param>
+    /// <param name="ResultDenominator"></param>
     [Test]
     [TestCase(4,6,2,3)]
-    public void TestLongSimplifyFraction(long Numerator, long Demoninator, long ResultNumerator, long ResultDenominator)
+    [TestCase(1,3,1,3)]
+    [TestCase(100,200,1,2)]
+    public void TestLongSimplifyFraction(long Numerator, long Denominator, long ResultNumerator, long ResultDenominator)
     {
-        var result = Fraction.l_SimplifyFraction(Numerator, Demoninator);
+        var result = Fraction.l_SimplifyFraction(Numerator, Denominator);
         Assert.Multiple(() =>
         {
             Assert.That(result.l_Numerator, Is.EqualTo(ResultNumerator));
@@ -102,7 +158,15 @@ public class Tests
         });
     }
 
-
+    /// <summary>
+    /// Test MixedFraction
+    /// </summary>
+    /// <param name="FirstNumerator"></param>
+    /// <param name="FirstDenominator"></param>
+    /// <param name="ResultUnit"></param>
+    /// <param name="ResultNumerator"></param>
+    /// <param name="ResultDenominator"></param>
+    /// <param name="status"></param>
     [Test]
     [TestCase(3,2,1,1,2,"OK")]
     [TestCase(5,2,2,1,2,"OK")]
@@ -120,6 +184,15 @@ public class Tests
         });
     }
 
+    /// <summary>
+    /// Test ToFraction
+    /// </summary>
+    /// <param name="Unit"></param>
+    /// <param name="Numerator"></param>
+    /// <param name="Denominator"></param>
+    /// <param name="ResultNumerator"></param>
+    /// <param name="ResultDenominator"></param>
+    /// <param name="status"></param>
     [Test]
     [TestCase(3,1,2,7,2,"OK")]
     [TestCase(5,2,2,12,2,"OK")]
@@ -134,6 +207,12 @@ public class Tests
         });
     }
 
+    /// <summary>
+    /// Test ToFraction
+    /// </summary>
+    /// <param name="Value"></param>
+    /// <param name="ResultNumerator"></param>
+    /// <param name="ResultDenominator"></param>
     [Test]
     [TestCase(0.5,1,2)]
     [TestCase(0.75,3,4)]
