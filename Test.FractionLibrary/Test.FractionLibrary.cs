@@ -92,9 +92,9 @@ public class Tests
 
     [Test]
     [TestCase(4,6,2,3)]
-    public void TestLongSimplifyFraction(long Numerator, long Demoninator, long ResultNumerator, long ResultDenominator)
+    public void TestLongSimplifyFraction(long Numerator, long Denominator, long ResultNumerator, long ResultDenominator)
     {
-        var result = Fraction.l_SimplifyFraction(Numerator, Demoninator);
+        var result = Fraction.l_SimplifyFraction(Numerator, Denominator);
         Assert.Multiple(() =>
         {
             Assert.That(result.l_Numerator, Is.EqualTo(ResultNumerator));
